@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:travel_app/presentation/colors.dart';
+import 'package:travel_app/presentation/resource/colors_manager.dart';
 import 'package:travel_app/presentation/cubit/app_cubits.dart';
+import 'package:travel_app/presentation/resource/image_manager.dart';
+import 'package:travel_app/presentation/resource/string_manager.dart';
 import 'package:travel_app/presentation/widgets/app_large_text.dart';
 import 'package:travel_app/presentation/widgets/app_text.dart';
 import 'package:travel_app/presentation/widgets/responsive_button.dart';
@@ -15,12 +17,9 @@ class WelcomePage extends StatefulWidget {
 
 class _WelcomePageState extends State<WelcomePage> {
   var images = {
-    "welcome-one.png":
-        "Gives you a taste of the Canada mountains, from Horseshoe Bay in the north of Vancouver to Pemberton. ",
-    "welcome-two.png":
-        "Moraine Lake is yet another astonishing geographical location that you cannot afford to miss out on if you’re traveling along the Icefields Parkway",
-    "welcome-three.png":
-        "The Icefields Parkway offers you the picturesque panorama of Alberta’s most talked about mountain vistas. ",
+    AssetsManager.imgWel1: StringManager.strWel1,
+    AssetsManager.imgWel2: StringManager.strWel2,
+    AssetsManager.imgWel3: StringManager.strWel3
   };
 
   @override
@@ -36,7 +35,7 @@ class _WelcomePageState extends State<WelcomePage> {
               height: double.maxFinite,
               decoration: BoxDecoration(
                   image: DecorationImage(
-                      image: AssetImage("img/" + images.keys.elementAt(index)),
+                      image: AssetImage(images.keys.elementAt(index)),
                       fit: BoxFit.cover)),
               child: Container(
                   margin: const EdgeInsets.only(top: 150, left: 20, right: 20),
@@ -46,9 +45,9 @@ class _WelcomePageState extends State<WelcomePage> {
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          AppLargeText(text: "Trips"),
+                          AppLargeText(text: StringManager.trips),
                           AppText(
-                            text: "Mountain",
+                            text: StringManager.mountain,
                             size: 30,
                           ),
                           const SizedBox(

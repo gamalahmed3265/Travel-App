@@ -13,10 +13,9 @@ abstract class DataServices {
 class DataServicesImp extends DataServices {
   @override
   Future<List<DataReponse>> getData() async {
-    http.Response res = await http.get(Uri.parse(baseUrl + apiUrl));
+    http.Response res = await http.get(Uri.parse(apiUrl));
     if (res.statusCode == 200) {
       List<dynamic> list = json.decode(res.body);
-      print(list);
       return list.map((e) => DataReponse.fromJson(e)).toList();
     } else {
       throw ServerException(failure: ErrorMessageModel.formJson(res.headers));

@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:travel_app/presentation/colors.dart';
+import 'package:travel_app/presentation/resource/colors_manager.dart';
 import 'package:travel_app/presentation/cubit/app_cubit_states.dart';
 import 'package:travel_app/presentation/cubit/app_cubits.dart';
+import 'package:travel_app/presentation/resource/string_manager.dart';
 import 'package:travel_app/presentation/widgets/app_buttons.dart';
 import 'package:travel_app/presentation/widgets/app_large_text.dart';
 import 'package:travel_app/presentation/widgets/app_text.dart';
@@ -38,8 +39,7 @@ class _DetailPageState extends State<DetailPage> {
                     height: 350,
                     decoration: BoxDecoration(
                       image: DecorationImage(
-                          image: NetworkImage(
-                              "$baseUrl/uploads/" + detail.place.img),
+                          image: NetworkImage(detail.place.img),
                           fit: BoxFit.cover),
                     ),
                   )),
@@ -134,7 +134,7 @@ class _DetailPageState extends State<DetailPage> {
                             height: 25,
                           ),
                           AppLargeText(
-                            text: "People",
+                            text: StringManager.people,
                             color: Colors.black.withOpacity(0.8),
                             size: 20,
                           ),
@@ -142,7 +142,7 @@ class _DetailPageState extends State<DetailPage> {
                             height: 5,
                           ),
                           AppText(
-                            text: "Number of people in your group",
+                            text: StringManager.details1,
                             color: AppColors.mainTextColor,
                           ),
                           const SizedBox(
@@ -179,7 +179,7 @@ class _DetailPageState extends State<DetailPage> {
                             height: 20,
                           ),
                           AppLargeText(
-                              text: "Description",
+                              text: StringManager.description,
                               color: Colors.black.withOpacity(0.8),
                               size: 20),
                           const SizedBox(

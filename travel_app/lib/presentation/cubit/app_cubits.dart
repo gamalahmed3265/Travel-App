@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:bloc/bloc.dart';
 import 'package:travel_app/domain/model/data_model.dart';
 import 'package:travel_app/domain/use_case/data_use_case.dart';
@@ -14,6 +16,9 @@ class AppCubits extends Cubit<CubitStates> {
     try {
       emit(LoadingState());
       places = await data.execute();
+
+      print("AppCubits ---------- $places");
+
       emit(LoadedState(places));
     } catch (e) {}
   }

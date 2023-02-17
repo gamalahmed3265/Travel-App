@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:travel_app/presentation/colors.dart';
+import 'package:travel_app/presentation/resource/colors_manager.dart';
+import 'package:travel_app/presentation/resource/image_manager.dart';
+import 'package:travel_app/presentation/resource/string_manager.dart';
 import 'package:travel_app/presentation/widgets/app_text.dart';
 
 // ignore: must_be_immutable
@@ -26,9 +28,10 @@ class ResponsiveButton extends StatelessWidget {
             isResponsive == true
                 ? Container(
                     margin: const EdgeInsets.only(left: 20),
-                    child: AppText(text: "Book Trip Now", color: Colors.white))
+                    child: AppText(
+                        text: StringManager.buttonText, color: Colors.white))
                 : Container(),
-            Image.asset("img/button-one.png"),
+            Image.asset(AssetsManager.buttonOne),
           ],
         ),
       ),

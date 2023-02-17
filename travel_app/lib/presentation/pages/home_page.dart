@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:travel_app/presentation/colors.dart';
+import 'package:travel_app/presentation/resource/colors_manager.dart';
 import 'package:travel_app/presentation/cubit/app_cubit_states.dart';
 import 'package:travel_app/presentation/cubit/app_cubits.dart';
+import 'package:travel_app/presentation/resource/image_manager.dart';
+import 'package:travel_app/presentation/resource/string_manager.dart';
 import 'package:travel_app/presentation/widgets/app_large_text.dart';
 import 'package:travel_app/presentation/widgets/app_text.dart';
-
-import '../../app/const.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -17,10 +17,10 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
   var images = {
-    "balloning.png": "Balloning",
-    "hiking.png": "Hiking",
-    "kayaking.png": "Kayaking",
-    "snorkling.png": "Snorkling"
+    AssetsManager.imgHom1: StringManager.strHom1,
+    AssetsManager.imgHom2: StringManager.strHom2,
+    AssetsManager.imgHom3: StringManager.strHom3,
+    AssetsManager.imgHom4: StringManager.strHom4
   };
   @override
   Widget build(BuildContext context) {
@@ -58,7 +58,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                 //discover text
                 Container(
                   margin: const EdgeInsets.only(left: 20),
-                  child: AppLargeText(text: "Discover"),
+                  child: AppLargeText(text: StringManager.discover),
                 ),
                 const SizedBox(
                   height: 20,
@@ -78,9 +78,9 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                         indicator: CircleTabIndicator(
                             color: AppColors.mainColor, radius: 4),
                         tabs: const [
-                          Tab(text: "Places"),
-                          Tab(text: "Inspiration"),
-                          Tab(text: "Emotions"),
+                          Tab(text: StringManager.places),
+                          Tab(text: StringManager.inspiration),
+                          Tab(text: StringManager.emotions),
                         ]),
                   ),
                 ),
@@ -108,8 +108,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                                   borderRadius: BorderRadius.circular(20),
                                   color: Colors.white,
                                   image: DecorationImage(
-                                      image: NetworkImage("$baseUrl/uploads/" +
-                                          info[index].img),
+                                      image: NetworkImage(info[index].img),
                                       fit: BoxFit.cover)),
                             ),
                           );
@@ -118,14 +117,15 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                       ListView.builder(itemBuilder: (context, index) {
                         return ListTile(
                           leading: const Icon(Icons.account_circle),
-                          title: Text("Line " + (index + 1).toString()),
+                          title:
+                              Text(StringManager.line + (index + 1).toString()),
                           selectedTileColor: Colors.green[400],
                           onTap: () {
                             setState(() {});
                           },
                         );
                       }),
-                      const Text("Bye")
+                      const Text(StringManager.bye)
                     ],
                   ),
                 ),
@@ -138,10 +138,12 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       AppLargeText(
-                        text: "Explore more",
+                        text: StringManager.exploreMore,
                         size: 22,
                       ),
-                      AppText(text: "See all", color: AppColors.textColor1)
+                      AppText(
+                          text: StringManager.seeAll,
+                          color: AppColors.textColor1)
                     ],
                   ),
                 ),
@@ -169,7 +171,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                                     borderRadius: BorderRadius.circular(20),
                                     color: Colors.white,
                                     image: DecorationImage(
-                                        image: AssetImage("img/" +
+                                        image: AssetImage(
                                             images.keys.elementAt(index)),
                                         fit: BoxFit.cover)),
                               ),
