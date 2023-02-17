@@ -6,7 +6,7 @@ import 'package:travel_app/presentation/cubit/app_cubits.dart';
 import 'package:travel_app/presentation/widgets/app_large_text.dart';
 import 'package:travel_app/presentation/widgets/app_text.dart';
 
-import '../../data/services/data_services.dart';
+import '../../app/const.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -108,9 +108,8 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                                   borderRadius: BorderRadius.circular(20),
                                   color: Colors.white,
                                   image: DecorationImage(
-                                      image: NetworkImage(
-                                          "${DataServices.baseUrl}/uploads/" +
-                                              info[index].img),
+                                      image: NetworkImage("$baseUrl/uploads/" +
+                                          info[index].img),
                                       fit: BoxFit.cover)),
                             ),
                           );

@@ -8,7 +8,7 @@ import 'package:travel_app/presentation/widgets/app_large_text.dart';
 import 'package:travel_app/presentation/widgets/app_text.dart';
 import 'package:travel_app/presentation/widgets/responsive_button.dart';
 
-import '../../data/services/data_services.dart';
+import '../../app/const.dart';
 
 class DetailPage extends StatefulWidget {
   const DetailPage({Key? key}) : super(key: key);
@@ -39,8 +39,7 @@ class _DetailPageState extends State<DetailPage> {
                     decoration: BoxDecoration(
                       image: DecorationImage(
                           image: NetworkImage(
-                              "${DataServices.baseUrl}/uploads/" +
-                                  detail.place.img),
+                              "$baseUrl/uploads/" + detail.place.img),
                           fit: BoxFit.cover),
                     ),
                   )),

@@ -1,19 +1,19 @@
 import 'package:bloc/bloc.dart';
-import 'package:travel_app/data/model/data_model.dart';
-import 'package:travel_app/data/services/data_services.dart';
+import 'package:travel_app/domain/model/data_model.dart';
+import 'package:travel_app/domain/use_case/data_use_case.dart';
 import 'package:travel_app/presentation/cubit/app_cubit_states.dart';
 
 class AppCubits extends Cubit<CubitStates> {
-  AppCubits({required this.data}) : super(InitialState()) {
+  AppCubits(this.data) : super(InitialState()) {
     emit(WelcomeState());
   }
-  final DataServices data;
+  final DataUseCase data;
   late final places;
 
   void getData() async {
     try {
       emit(LoadingState());
-      places = await data.getInfo();
+      places = await data.execute();
       emit(LoadedState(places));
     } catch (e) {}
   }
